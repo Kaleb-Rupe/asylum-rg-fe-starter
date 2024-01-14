@@ -58,12 +58,8 @@ function GraphWrapper(props) {
     stateSettingCallback
   ) {
     const URL = 'https://hrf-asylum-be-b.herokuapp.com/cases';
-    // const loadingContainer = document.getElementById('loading-container');
 
     if (office === 'all' || !office) {
-      // Show the loading indicator
-      // loadingContainer.style.display = 'block';
-
       try {
         const [callA, callB] = await Promise.all([
           axios.get(`${URL}/fiscalSummary`, {
@@ -85,13 +81,9 @@ function GraphWrapper(props) {
         const citizenshipResults = callB.data;
         const combinedData = [{ yearResults, citizenshipResults }];
 
-        // Calling the "stateSettingCallback" function with the specified parameters.
         stateSettingCallback(view, office, [combinedData][0]);
       } catch (err) {
         console.error(err);
-      } finally {
-        // Hide the loading indicator after the Axios calls complete (whether successful or with an error).
-        // loadingContainer.style.display = 'none';
       }
     }
   }
