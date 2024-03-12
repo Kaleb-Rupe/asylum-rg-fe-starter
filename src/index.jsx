@@ -28,13 +28,16 @@ import { Auth0Provider } from '@auth0/auth0-react';
 
 const { primary_accent_color } = colors;
 
+const domain = process.env.REACT_APP_AUTH0_DOMAIN;
+const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
+
 const store = configureStore({ reducer: reducer });
 ReactDOM.render(
   <Router>
     <Provider store={store}>
       <Auth0Provider
-        domain="dev-271523doueviqtn3.us.auth0.com"
-        clientId="PGUmNxN4kl16b7cN3W8y420CKca8PaOM"
+        domain={domain}
+        clientId={clientId}
         authorizationParams={{
           redirect_uri: window.location.origin,
         }}
